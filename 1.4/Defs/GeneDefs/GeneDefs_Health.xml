@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <GeneDef ParentName="GeneHealingRateBase">
+    <defName>WoundHealing_psychic</defName>
+    <label>slow wound psychic</label>
+    <modExtensions>
+			<li Class="EmergentGenes.EmergentGeneModExtension">
+				<GenePrerequisite>
+					<li>Delicate</li>
+					<li>WoundHealing_Slow</li>
+				</GenePrerequisite>
+				<HiddenGene>true</HiddenGene>
+			</li>
+    </modExtensions>
+    <labelShortAdj>slow-heal</labelShortAdj>
+    <description>Carriers of this gene heal from wounds half as fast as normal.</description>
+    <iconPath>UI/Icons/Genes/Gene_WoundHealingRateSlow</iconPath>
+    <displayOrderInCategory>30</displayOrderInCategory>
+    <statFactors>
+      <InjuryHealingFactor>0.5</InjuryHealingFactor>
+    </statFactors>
+    <biostatMet>2</biostatMet>
+    <symbolPack>
+      <prefixSymbols>
+        <li><symbol>soft</symbol></li>
+      </prefixSymbols>
+    </symbolPack>
+  </GeneDef>
+  <GeneDef ParentName="GeneHealingRateBase">
+    <defName>WoundHealing_psychic_brolo</defName>
+    <label>slow wound psychic dos</label>
+    <modExtensions>
+			<li Class="EmergentGenes.EmergentGeneModExtension">
+				<GenePrerequisite>
+					<li>MinTemp_SmallIncrease</li>
+					<li>MaxTemp_LargeIncrease</li>
+				</GenePrerequisite>
+				<GeneExclusion>
+					<li>PsychicAbility_Deaf</li>
+					<li>PsychicAbility_Dull</li>
+				</GeneExclusion>
+				<HiddenGene>true</HiddenGene>
+			</li>
+    </modExtensions>
+    <labelShortAdj>slow-heal</labelShortAdj>
+    <description>Carriers of this gene heal from wounds half as fast as normal.</description>
+    <iconPath>UI/Icons/Genes/Gene_WoundHealingRateSlow</iconPath>
+    <displayOrderInCategory>30</displayOrderInCategory>
+    <statFactors>
+      <InjuryHealingFactor>0.5</InjuryHealingFactor>
+    </statFactors>
+    <biostatMet>2</biostatMet>
+    <symbolPack>
+      <prefixSymbols>
+        <li><symbol>soft</symbol></li>
+      </prefixSymbols>
+    </symbolPack>
+  </GeneDef>
+  <GeneDef ParentName="GeneHealingRateBase">
+    <defName>WoundHealing_psychic_brolotes</defName>
+    <label>slow wound psychic tres</label>
+    <modExtensions>
+			<li Class="EmergentGenes.EmergentGeneModExtension">
+				<GeneExclusion>
+					<li>PsychicAbility_Deaf</li>
+					<li>PsychicAbility_Dull</li>
+				</GeneExclusion>
+				<HiddenGene>true</HiddenGene>
+			</li>
+    </modExtensions>
+    <labelShortAdj>slow-heal</labelShortAdj>
+    <description>Carriers of this gene heal from wounds half as fast as normal.</description>
+    <iconPath>UI/Icons/Genes/Gene_WoundHealingRateSlow</iconPath>
+    <displayOrderInCategory>30</displayOrderInCategory>
+    <statFactors>
+      <InjuryHealingFactor>0.5</InjuryHealingFactor>
+    </statFactors>
+    <biostatMet>2</biostatMet>
+    <symbolPack>
+      <prefixSymbols>
+        <li><symbol>soft</symbol></li>
+      </prefixSymbols>
+    </symbolPack>
+  </GeneDef>
+</Defs>
