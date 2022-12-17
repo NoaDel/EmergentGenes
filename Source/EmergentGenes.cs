@@ -28,7 +28,8 @@ namespace EmergentGenes
     public class EmergentGeneModExtension : DefModExtension
     {
         public List<GeneDef> GenePrerequisite;
-        public List<GeneDef> GeneShare;
+        public List<string> GeneShare;
+        public List<string> GeneTag;
         public List<GeneDef> GeneExclusion;
         public bool HiddenGene;
     }
@@ -56,22 +57,65 @@ namespace EmergentGenes
             List<GeneDef> testing = DefDatabase<GeneDef>.AllDefsListForReading;
             foreach (GeneDef geneDef1 in testing)
             {
-                if (geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite?.TrueForAll(gd => ___selectedGenes.Contains(gd)) ?? true)
+                /*if (geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneTag != null)
                 {
-                    if (!___selectedGenes.Contains(geneDef1) && (!geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneExclusion?.Any(gd => ___selectedGenes.Contains(gd)) ?? true) && (geneDef1?.HasModExtension<EmergentGeneModExtension>() ?? false) && (geneDef1.GetModExtension<EmergentGeneModExtension>().GenePrerequisite != null))
+                    List<string> list = geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneTag;
+                    for (int i = 0; i < list.Count; i++)
                     {
-                        Log.Message(geneDef1.ToString() + " was added");
+                        if (list[i] == "thorium")
+                        {
+                            Log.Message(list[i]);
+                        }
+                    }
+                }*/
+                /*if (___selectedGenes?.Any(i => i.GetModExtension<EmergentGeneModExtension>()?.GeneTag == geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare) ?? false)
+                {
+                    //Log.Message("i am working");
+                    if (geneDef1.defName == "WoundHealing_psychic_brolotes")
+                    {
+                        Log.Message("slap my ass");
+                    }
+                }*/
+                /*if (___selectedGenes?.Any(i => i.GetModExtension<EmergentGeneModExtension>()?.GeneTag?.Any(q =>  geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare?.Contains(q) ?? false) ?? false) ?? false)
+                {
+                    //Log.Message("i am working");
+                    if (geneDef1.defName == "WoundHealing_psychic_brolotes")
+                    {
+                        Log.Message("slap my ass");
+                    }
+                }*/
+                /*if (testing?.Any(i => i.GetModExtension<EmergentGeneModExtension>()?.GeneShare == geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneTag) ?? false)
+                {
+                    //Log.Message("i am working");
+                    if (geneDef1.defName == "WoundHealing_psychic_brolotes")
+                    {
+                        Log.Message("slap my ass");
+                    }
+                }*/
+                if ((geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite?.TrueForAll(gd => ___selectedGenes.Contains(gd)) ?? false) || (___selectedGenes?.Any(i => i.GetModExtension<EmergentGeneModExtension>()?.GeneTag?.Any(q => geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare?.Contains(q) ?? false) ?? false) ?? false))
+                {
+                    if (geneDef1.defName == "WoundHealing_psychic_brolotes")
+                    {
+                        Log.Message("oh captain lets make a deal");
+                    }
+                    if (!___selectedGenes.Contains(geneDef1) && (!geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneExclusion?.Any(gd => ___selectedGenes.Contains(gd)) ?? true) && (geneDef1?.HasModExtension<EmergentGeneModExtension>() ?? false) && ((geneDef1.GetModExtension<EmergentGeneModExtension>().GenePrerequisite != null) || (geneDef1.GetModExtension<EmergentGeneModExtension>().GeneShare != null)))
+                    {
+                        //Log.Message(geneDef1.defName);
                         ___selectedGenes.Add(geneDef1);
                     }
                     if (___selectedGenes.Contains(geneDef1) && (geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneExclusion?.Any(gd => ___selectedGenes.Contains(gd)) ?? false))
                     {
-                        Log.Message(geneDef1.ToString() + " was removed");
                         ___selectedGenes.Remove(geneDef1);
                         Messages.Message("DoNotHaveRequirements", null, MessageTypeDefOf.RejectInput, historical: false);
                     }
                 }
-                if (!geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite?.TrueForAll(gd => ___selectedGenes.Contains(gd)) ?? false)
+                Log.Message((!___selectedGenes?.Any(i => i.GetModExtension<EmergentGeneModExtension>()?.GeneTag?.Any(q => geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare?.Contains(q) ?? false) ?? false) ?? false).ToString());
+                if ((!geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite?.TrueForAll(gd => ___selectedGenes.Contains(gd)) ?? false) || ((geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare != null)) && (!___selectedGenes?.Any(i => i.GetModExtension<EmergentGeneModExtension>()?.GeneTag?.Any(q => geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare?.Contains(q) ?? false) ?? false) ?? false))
                 {
+                    if (geneDef1.defName == "WoundHealing_psychic_brolotes")
+                    {
+                        Log.Message("oh captain lets not make a deal");
+                    }
                     if (___selectedGenes.Contains(geneDef1) && (geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneExclusion?.Any(gd => ___selectedGenes.Contains(gd)) ?? true))
                     {
                         ___selectedGenes.Remove(geneDef1);
@@ -79,7 +123,6 @@ namespace EmergentGenes
                     }
                     if (___selectedGenes.Contains(geneDef1) && (!geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneExclusion?.Any(gd => ___selectedGenes.Contains(gd)) ?? false))
                     {
-                        Log.Message(geneDef1.ToString() + " was removed");
                         ___selectedGenes.Remove(geneDef1);
                         Messages.Message("DoNotHaveRequirements", null, MessageTypeDefOf.RejectInput, historical: false);
                     }
@@ -139,7 +182,7 @@ namespace EmergentGenes
             {
                 /*GenepackSet.ToList<GeneDef>().ForEach(x => Log.Message(x.ToString()));
                 GenepackTempSet.ToList<GeneDef>().ForEach(x => Log.Message(x.ToString()));*/
-                if (geneDef1.HasModExtension<EmergentGeneModExtension>() && (geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite?.TrueForAll(gd => selectgenes.Contains(gd)) ?? false))
+                if (geneDef1.HasModExtension<EmergentGeneModExtension>() && (geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite?.TrueForAll(gd => selectgenes.Contains(gd)) ?? false) || (selectgenes?.Any(i => i.GetModExtension<EmergentGeneModExtension>()?.GeneTag?.Any(q => geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare?.Contains(q) ?? false) ?? false) ?? false))
                 {
                     //GenepackTempSet.Add();
                     /*foreach (GeneDef test in GenepackTempSet)
@@ -148,6 +191,7 @@ namespace EmergentGenes
                     }*/
                     genesToAdd.Add(geneDef1);
                     thor1.Initialize(genesToAdd);
+                    genesToAdd.Clear();
                     if (!selectgenes.Contains(geneDef1))
                     {
                         /*for (int i = thor1.GeneSet.GenesListForReading.Count - 1; i >= 0; i--)
@@ -158,7 +202,7 @@ namespace EmergentGenes
                         ___selectedGenepacks.Add(thor1);
                     }
                 }
-                if (selectgenes.Contains(geneDef1) && (!geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite?.All(gd => selectgenes.Contains(gd)) ?? false))
+                if (selectgenes.Contains(geneDef1) && (!geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite?.All(gd => selectgenes.Contains(gd)) ?? false) || ((!geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare.NullOrEmpty()) ?? false) && (!selectgenes?.Any(i => i.GetModExtension<EmergentGeneModExtension>()?.GeneTag?.Any(q => geneDef1?.GetModExtension<EmergentGeneModExtension>()?.GeneShare?.Contains(q) ?? false) ?? false) ?? false))
                 {
                     Log.Message("i should get removed");
                     /*foreach (Genepack v in ___selectedGenepacks)
@@ -190,7 +234,11 @@ namespace EmergentGenes
                         Genepack genepacksSelected = ___selectedGenepacks[i];
                         for (int j = genepacksSelected.GeneSet.GenesListForReading.Count - 1; j >= 0; j--)
                         {
-                            if (!genepacksSelected.GeneSet.GenesListForReading[j].GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite.All(gd => selectgenes.Contains(gd)) ?? false)
+                            /*if (!genepacksSelected.GeneSet?.GenesListForReading[j]?.GetModExtension<EmergentGeneModExtension>()?.GeneShare?.Any(gd => selectgenes.Any(p => p.GetModExtension<EmergentGeneModExtension>()?.GeneTag?.Contains(gd) ?? false)) ?? false)
+                            {
+                                Log.Message("ians a bitch");
+                            }*/
+                            if ((!genepacksSelected.GeneSet?.GenesListForReading[j].GetModExtension<EmergentGeneModExtension>()?.GeneShare.NullOrEmpty() ?? false) || (!genepacksSelected.GeneSet?.GenesListForReading[j].GetModExtension<EmergentGeneModExtension>()?.GeneTag.NullOrEmpty() ?? false) && ((!genepacksSelected.GeneSet?.GenesListForReading[j]?.GetModExtension<EmergentGeneModExtension>()?.GenePrerequisite.All(gd => selectgenes.Contains(gd)) ?? false) || (!genepacksSelected.GeneSet?.GenesListForReading[j]?.GetModExtension<EmergentGeneModExtension>()?.GeneShare?.Any(gd => selectgenes.Any(p => p.GetModExtension<EmergentGeneModExtension>()?.GeneTag?.Contains(gd) ?? false)) ?? false)))
                             {
                                 Log.Message("removed " + ___selectedGenepacks[i].ToString());
                                 ___selectedGenepacks.Remove(___selectedGenepacks[i]);

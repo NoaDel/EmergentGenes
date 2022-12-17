@@ -9,6 +9,9 @@
 					<li>Delicate</li>
 					<li>WoundHealing_Slow</li>
 				</GenePrerequisite>
+				<GeneTag>
+					<li>thorium</li>
+				</GeneTag>
 				<HiddenGene>true</HiddenGene>
 			</li>
     </modExtensions>
@@ -35,6 +38,9 @@
 					<li>MinTemp_SmallIncrease</li>
 					<li>MaxTemp_LargeIncrease</li>
 				</GenePrerequisite>
+				<GeneTag>
+					<li>thorium</li>
+				</GeneTag>
 				<GeneExclusion>
 					<li>PsychicAbility_Deaf</li>
 					<li>PsychicAbility_Dull</li>
@@ -65,6 +71,9 @@
 					<li>PsychicAbility_Deaf</li>
 					<li>PsychicAbility_Dull</li>
 				</GeneExclusion>
+				<GeneShare>
+					<li>thorium</li>
+				</GeneShare>
 				<HiddenGene>true</HiddenGene>
 			</li>
     </modExtensions>
