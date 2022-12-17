@@ -135,14 +135,6 @@ namespace EmergentGenes
 
         }
     }
-    /*[HarmonyPatch(typeof(GeneUtility), "GeneSet GenerateGeneSet")]
-    public static class GenepackExcluderPatch
-    {
-        public static void Postfix(int? ___seed = null)
-        {
-            Log.Message("testingtesting");
-        }
-    }*/
 
     [HarmonyPatch(typeof(GeneSet), "CanAddGeneDuringGeneration")]
     public static class GenepackExcluderPatch
@@ -156,45 +148,4 @@ namespace EmergentGenes
             }
         }
     }
-    /*[HarmonyPatch(typeof(Genepack), "Initialize")]
-    public static class GenepackExcluderPatch
-    {
-        public static void Prefix(List<GeneDef> genes, GeneSet ___geneSet)
-        {
-            ___geneSet = new GeneSet();
-            foreach (GeneDef gene in genes)
-            {
-                Log.Message("i have been curved and swerved and most of all, perturbed");
-                if (gene.GetModExtension<EmergentGeneModExtension>()?.HiddenGene ?? false && gene.GetModExtension<EmergentGeneModExtension>().HiddenGene)
-                {
-                    Log.Message("i have been curved and swerved and most of all, perturbed");
-                }
-                else
-                {
-                    ___geneSet.AddGene(gene);
-                }
-            }
-        }
-    }*/
-    /*[HarmonyPatch(typeof(Genepack), "Initialize")]
-    public static class GenepackExcluderPatch
-    {
-        public static void Postfix(List<GeneDef> genes, GeneSet ___geneSet)
-        {
-                Log.Message("i have been curved and swerved and most of all, perturbed");
-        }
-    }*/
 }
-/*List<Genepack> bro = new List<Genepack>();
-List<GeneSet> alt = new List<GeneSet>();*/
-//geneDef1.GeneSet.GenesListForReading
-//Genepack genepack = (Genepack)ThingMaker.MakeThing(ThingDefOf.Genepack);
-//bro.Add(geneDef1);
-//___selectedGenepacks.Add(geneDef1);
-//___selectedGenepacks.Add(alt);
-/*Log.Message(__result.ToString());
-geneSet = new GeneSet();
-foreach (GeneDef gene in genes)
-{
-    geneSet.AddGene(gene);
-}*/
