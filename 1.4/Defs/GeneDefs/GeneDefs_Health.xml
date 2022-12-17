@@ -67,6 +67,9 @@
     <label>slow wound psychic tres</label>
     <modExtensions>
 			<li Class="EmergentGenes.EmergentGeneModExtension">
+				<GenePrerequisite>
+					<li>MinTemp_SmallDecrease</li>
+				</GenePrerequisite>
 				<GeneExclusion>
 					<li>PsychicAbility_Deaf</li>
 					<li>PsychicAbility_Dull</li>
